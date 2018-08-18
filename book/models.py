@@ -15,5 +15,5 @@ class Book(models.Model):
 		('5', 'Very Bad'),
 	)
 
-	rating = models.CharField(choices=RATING, help_text='Rate the book on a scale of 1 to 5')
-	average = models.DecimalField(help_text='Average review score for book')
+	rating = models.CharField(choices=RATING, max_length=1, help_text='Rate the book on a scale of 1 to 5')
+	average = models.DecimalField(max_digits=1, decimal_places=1, help_text='Average review score for book')
