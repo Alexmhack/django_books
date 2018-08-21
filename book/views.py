@@ -3,6 +3,7 @@ from django.views import generic, View
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 from .models import Book
+from .forms import JsonDataForm
 
 class BookListView(generic.ListView):
 	model = Book
@@ -42,3 +43,12 @@ class IndexView(View):
 			'book_before_1980': queryset.filter(year__lte=1980).count(),
 		}
 		return render(request, 'book/index.html', context)
+
+
+class JsonDataView(View):
+	def get(self, request, *args, **kwargs):
+		form = JsonDataForm()
+		context = {
+			'form': form
+		}
+		return render(request, 'book/json_form.html', context)
