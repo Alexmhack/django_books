@@ -5,11 +5,105 @@
 {% endblock %}
 
 {% block content %}
-	<p>Total Books in store: {{ total_count }}</p>
-	<p>Total Books published after year 2000: {{ book_after_2000 }}</p>
-	<p>Total Books published before year 2000: {{ book_before_2000 }}</p>
-	<p>Total Books published after year 1990: {{ book_after_1990 }}</p>
-	<p>Total Books published before year 1990: {{ book_before_1990 }}</p>
-	<p>Total Books published after year 1980: {{ book_after_1980 }}</p>
-	<p>Total Books published before year 1980: {{ book_before_1980 }}</p>
+	
+<div class="container">
+	
+	<div class="jumbotron">
+	    <h1 class="h1-responsive">Django Book Store</h1>
+	    <p class="lead">Welcome to the biggest book store created in Django with lot of patience and hard work</p>
+	    <hr class="my-2">
+	    <p>
+	    	We have a great collection of books. View our collection of over 5000+ and constantly increasing books collection
+	    </p>
+	    <a class="btn btn-primary btn-lg" href="{% url 'book-list' %}" role="button">Learn more</a>
+	</div>
+
+	<!-- MAIN:cards -->
+	<!-- Card deck -->
+	<div class="card-deck">
+
+	  <!-- Card -->
+	  <div class="card mb-4">
+
+	    <!--Card image-->
+	    <div class="view overlay">
+	      <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap">
+	      <a href="#!">
+	        <div class="mask rgba-white-slight"></div>
+	      </a>
+	    </div>
+
+	    <!--Card content-->
+	    <div class="card-body">
+
+	      <!--Title-->
+	      <h4 class="card-title">Total {{ total_count }} Books</h4>
+	      <!--Text-->
+	      <p class="card-text">We have {{ total_count }}+ books in our book store in every category</p>
+	      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+	      <button type="button" onclick=location.href="{% url 'book-list' %}" class="btn btn-light-blue btn-md">Look at our collection</button>
+
+	    </div>
+
+	  </div>
+	  <!-- Card -->
+
+	  <!-- Card -->
+	  <div class="card mb-4">
+
+	    <!--Card image-->
+	    <div class="view overlay">
+	      <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/14.jpg" alt="Card image cap">
+	      <a href="#!">
+	        <div class="mask rgba-white-slight"></div>
+	      </a>
+	    </div>
+
+	    <!--Card content-->
+	    <div class="card-body">
+
+	      <!--Title-->
+	      <h4 class="card-title">{{ book_after_2000 }} Books</h4>
+	      <!--Text-->
+	      <p class="card-text">A total of {{ book_after_2000 }} books in our collection are published after 2000</p>
+	      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+	      <button type="button" onclick=location.href="" class="btn btn-light-blue btn-md">View Collection</button>
+
+	    </div>
+
+	  </div>
+	  <!-- Card -->
+
+	  <!-- Card -->
+	  <div class="card mb-4">
+
+	    <!--Card image-->
+	    <div class="view overlay">
+	      <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg" alt="Card image cap">
+	      <a href="#!">
+	        <div class="mask rgba-white-slight"></div>
+	      </a>
+	    </div>
+
+	    <!--Card content-->
+	    <div class="card-body">
+
+	      <!--Title-->
+	      <h4 class="card-title">{{ book_before_1990 }} Books</h4>
+	      <!--Text-->
+	      <p class="card-text">{{ book_before_1990 }} Books in our collection were published before 1990</p>
+	      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+	      <button type="button" class="btn btn-light-blue btn-md">View Collection</button>
+
+	    </div>
+
+	  </div>
+	  <!-- Card -->
+
+	</div>
+	<!-- Card deck -->
+	<!-- /MAIN:cards -->
+
+</div>
+
 {% endblock %}
