@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Detail
+{% endblock %}
+
+{% block content %}
+	<p>Total Books in store: {{ total_count }}</p>
+	<p>Total Books published after year 2000: {{ book_after_2000 }}</p>
+	<p>Total Books published before year 2000: {{ book_before_2000 }}</p>
+	<p>Total Books published after year 1990: {{ book_after_1990 }}</p>
+	<p>Total Books published before year 1990: {{ book_before_1990 }}</p>
+	<p>Total Books published after year 1980: {{ book_after_1980 }}</p>
+	<p>Total Books published before year 1980: {{ book_before_1980 }}</p>
+{% endblock %}
