@@ -16,3 +16,18 @@ class BookAPIFormView(View):
 			'form': form
 		}
 		return render(request, 'api/json_form.html', context)
+
+	def post(self, request, *args, **kwargs):
+		form = JsonDataForm(request.POST)
+		context = {
+			'form': form
+		}
+		template = "api/json_form.html"
+		if form.is_valid():
+			template = "api/json_data_success.html"
+			isbn_value = form.cleaned_data.get('isbn')
+			book = Book.objects.get(isbn=isbn_value)
+			context = {
+				'book': book
+			}
+		return render(request, template, context)
