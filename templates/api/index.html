@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Book API
+{% endblock %}
+
+{% block content %}
+	
+	<div class="container mb-5">
+
+		<!-- JUMBOTRON -->
+		<div class="jumbotron">
+		    <h1 class="h1-responsive">Django Books API</h1>
+		    <p class="lead">Django Books Store API can be access to get JSON format Book data</p>
+		    <hr class="my-2">
+		    <p>
+		    	Just click the button and enter the <a href="">ISBN</a> of the particular book from the book detail or search for the book and enter its url to get JSON formatted data of the book.
+		    </p>
+		    <a class="btn btn-primary btn-lg" href="" role="button">Get JSON Data</a>
+		</div>
+		<!-- /JUMBOTRON -->
+
+		<div class="section">
+
+			<h2 class="text-left">Get Started</h2>
+
+			<p>
+				Get JSON formatted data of book containing the book title, author, year, review count and average score in the format given below <br>
+				<code>
+					{<br>
+					    "title": "Memory",<br>
+					    "author": "Doug Lloyd",<br>
+					    "year": 2015,<br>
+					    "isbn": "1632168146",<br>
+					    "review_count": 28,<br>
+					    "average_score": 5.0<br>
+					}<br>
+				</code>
+				<br>
+			</p>
+			
+			<div class="mb-5">
+				<h2 class="text-left mb-3">Using The ISBN Form</h2>
+				<ol>
+					<li>Enter the ISBN of the book in the form and click 'GET'</li>
+					<li>A new window will open with the JSON data for the book</li>
+					<li>There is no limit on requesting for JSON data</li>
+				</ol>
+			</div>
+
+			<div class="mb-4">
+				<h2 class="text-left mb-3">Using The ISBN Url</h2>
+				<ol>
+					<li>Enter in the browser <code>127.0.0.1/api/isbn</code></li>
+					<li>Copy the JSON displayed</li>
+					<li>Unlimited request</li>
+				</ol>
+			</div>
+
+		</div>
+
+	</div>
+
+{% endblock content %}
