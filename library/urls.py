@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('book/', include('book.urls')),
     path('', RedirectView.as_view(url='/book/', permanent=True)),
-    path('api/', JsonDataView.as_view(), name='json-data-form'),
+    path('api/', include('api.urls')),
 ]
