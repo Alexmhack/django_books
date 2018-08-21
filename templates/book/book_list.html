@@ -13,7 +13,7 @@
 		
 		<div class="col-md-4 mb-4">
 			<div class="card">
-			    <h3 class="card-header primary-color white-text">{{ book.title }}</h3>
+			    <h3 class="card-header {% if forloop.counter|divisibleby:"2" %}primary-color{% else %}deep-orange{% endif %}white-text">{{ book.title }}</h3>
 			    <div class="card-body">
 			        <h4 class="card-title">
 			        	{{ book.author }}
