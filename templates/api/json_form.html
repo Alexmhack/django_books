@@ -8,10 +8,11 @@
 	
 	<div class="container mt-5 text-center">
 		<p class="text-center" for="exampleForm2"><strong>Enter the ISBN of book from our collection</strong></p>
-		<form action='.' method='POST' class="mt-4">
+		<form action="{% url 'isbn-form' %}" method='POST' class="mt-4">
 			{% csrf_token %}
 			<!-- Default input -->
 			{{ form.as_p }}
+			<button type="submit" class="btn btn-success">GET</button>
 		</form>
 	</div>
 
