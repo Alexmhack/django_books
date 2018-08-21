@@ -25,12 +25,18 @@ class BookAPIFormView(View):
 		}
 		template = "api/json_form.html"
 		if form.is_valid():
-			template = "api/json_data_success.html"
 			isbn_value = form.cleaned_data.get('isbn')
-			book = Book.objects.get(isbn=isbn_value)
-			context = {
-				'book': book
-			}
+			try:
+				book = Book.objects.get(isbn=isbn_value)
+				template = "api/json_data_success.html"
+				context = {
+					'book': book,
+				}
+			except Exception as e:
+				template = "api/json_form.html"
+				print(e)
+				context['error'] = "Error getting the Json data, most probably the ISBN entered is wrong"
+			return render(request, template, context)
 		return render(request, template, context)
 
 
