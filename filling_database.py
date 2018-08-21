@@ -1,3 +1,5 @@
+from book.models import Book
+
 with open('books.csv', 'r') as csvfile:
     reader = csv.reader(csvfile)
     count = 0
