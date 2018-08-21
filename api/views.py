@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
+from django.http import JsonResponse
 
 from book.models import Book
 from .forms import JsonDataForm
@@ -31,3 +32,21 @@ class BookAPIFormView(View):
 				'book': book
 			}
 		return render(request, template, context)
+
+
+class BookAPIJson(View):
+	def get(self, request, *args, **kwargs):
+		isbn = kwargs.get('isbn', '')
+		isbn_value = str(isbn)
+		if len(isbn_value) == 9:
+			isbn_value += '0'
+		book = get_object_or_404(Book, isbn=isbn_value)
+		data = {
+			"title": book.title,
+			"author": book.author,
+			"year": book.year,
+			"isbn": book.isbn,
+			"review_count": 28,
+			"average_score": 5.0
+		}
+		return JsonResponse(data)
