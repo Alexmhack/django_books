@@ -2,11 +2,14 @@
 
 {% block content %}
 
-	<div>
-		<p>{{ book.title }}</p>
-		<p>{{ book.author }}</p>
-		<p>{{ book.year }}</p>
-		<p>{{ book.isbn }}</p>
+	<div class="jumbotron container">
+	    <h1 class="h1-responsive">{{ book.title }}</h1>
+	    <p class="lead">Author: {{ book.author }}</p>
+	    <hr class="my-2">
+	    <p>It uses utility classes for typography and spacing to space content out within the larger
+	        container.
+	    </p>
+	    <p>ISBN: {{ book.isbn }}</p>
 	</div>
 
 {% endblock %}
