@@ -6,19 +6,31 @@
 
 {% block content %}
 
-	<ul>
+<div class="container mt-5 mb-5">
+	<!-- ROW -->
+	<div class="row">
 		{% for book in book_list %}
-		<li>
-			{{ book.title }}
-			<small>{{ book.year }} {{ book.isbn }}</small>
-			<p>{{ book.author }}</p>
-			<p>
-				<a href="{% url 'book-detail' book.pk %}" title="Book details">Book details</a>			
-			</p>
-		</li>
-		{% endfor %}
-	</ul>
+		
+		<div class="col-md-4 mb-4">
+			<div class="card">
+			    <h3 class="card-header primary-color white-text">{{ book.title }}</h3>
+			    <div class="card-body">
+			        <h4 class="card-title">
+			        	{{ book.author }}
+			        	<small>{{ book.year }}</small>
+			    	</h4>
+			        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+			        <a class="btn btn-primary" href="{% url 'book-detail' book.pk %}">Details</a>
+			    </div>
+			</div>
+		</div>
 
+		{% endfor %}
+	</div>
+	<!-- /ROW -->
+</div>
+	
+	<!-- PAGINATION -->
 	<div class="pagination">
 	    <span class="step-links">
 	        {% if book_page.has_previous %}
