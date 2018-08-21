@@ -17,4 +17,4 @@ with open('books.csv', 'r') as csvfile:
         if created:
             string = "CREATED"
         print(f"Object {string}: {count}")
-    print("TOTAL OBJECTS: {count}")
+    print(f"TOTAL OBJECTS: {count}")
