@@ -6,7 +6,7 @@ from .models import Book
 
 class BookListView(generic.ListView):
 	model = Book
-	paginate_by = 10
+	paginate_by = 9
 	ordering = ['-year']
 
 	def get_context_data(self, *args, **kwargs):
