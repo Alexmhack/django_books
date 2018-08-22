@@ -3,6 +3,18 @@ from django.db import models
 
 current_year = datetime.datetime.now().year
 
+class BookSearchManager(models.Manager):
+	def search(self, *args, **kwargs):
+		qs = self.get_query_set()
+		keywords = kwargs.get('query', '')
+		if keywords:
+			try:
+				qs = qs.filter(title__icontains=keywords)
+			except Exception as e:
+				pass
+		return qs
+
+
 class Book(models.Model):
 	title = models.CharField(max_length=100)
 	author = models.CharField(max_length=100)
