@@ -43,3 +43,16 @@ class IndexView(View):
 			'book_before_1980': queryset.filter(year__lte=1980).count(),
 		}
 		return render(request, 'book/index.html', context)
+
+
+class SearchFormResultsView(View):
+	def post(self, request, *args, **kwargs):
+		query = request.POST.get('query')
+		context = {'search_results': True}
+		try:
+			book = Book.objects.get(isbn=query)
+			context['book'] = book
+			context['search_result'] = 1
+		except Exception as e:
+			context['error'] = e
+		return render(request, 'book/search_results.html', context)
