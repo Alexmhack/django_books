@@ -48,11 +48,13 @@ class IndexView(View):
 class SearchFormResultsView(View):
 	def post(self, request, *args, **kwargs):
 		query = request.POST.get('query')
+		print(query)
 		context = {}
 		try:
-			book = Book.search_objects.search(query)
-			context['book'] = book
-			context['search_result'] = 1
+			books = Book.objects.filter(title__icontains=str(query))
+			context['books'] = books
+			context['search_results'] = books.count()
 		except Exception as e:
 			context['error'] = e
+			print(e)
 		return render(request, 'book/search_results.html', context)
