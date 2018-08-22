@@ -54,6 +54,19 @@
 					<li>Enter in the browser <code>127.0.0.1/api/isbn</code></li>
 					<li>Copy the JSON displayed</li>
 					<li>Unlimited request</li>
+					<li><strong>Json data using python</strong></li>
+					<li>
+						<code>
+							import requests<br>
+<br>
+							data = requests.get('http://127.0.0.1:8000/api/0778325504')<br>
+							print(data.json())<br>
+<br>
+							json = data.json()<br>
+							print(json['title'])<br>
+						</code>
+					</li>
+					<li>That's it.</li>
 				</ol>
 			</div>
 
