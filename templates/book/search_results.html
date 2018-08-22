@@ -11,8 +11,10 @@
 		<div class="">
 
 			<h1 class="text-left mb-4 mt-4">Search Results</h1>
-			{% if search_results %}
-				<p>{{ search_results }} {{ string }} found</p>
+			{% if search_results and query != '' %}
+				<p>{{ search_results }} {{ string }} found for <span class="text-info">{{ query }}</span></p>
+			{% elif no_results and query != '' %}
+				<p>{{ search_results }} {{ string }} found for <span class="text-info">{{ query }}</span></p>
 			{% endif %}
 
 			{% if error %}
