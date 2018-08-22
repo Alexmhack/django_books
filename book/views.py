@@ -50,7 +50,7 @@ class SearchFormResultsView(View):
 		query = request.POST.get('query')
 		context = {}
 		try:
-			book = Book.objects.search(query)
+			book = Book.search_objects.search(query)
 			context['book'] = book
 			context['search_result'] = 1
 		except Exception as e:
