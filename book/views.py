@@ -48,9 +48,9 @@ class IndexView(View):
 class SearchFormResultsView(View):
 	def post(self, request, *args, **kwargs):
 		query = request.POST.get('query')
-		context = {'search_results': True}
+		context = {}
 		try:
-			book = Book.objects.get(isbn=query)
+			book = Book.objects.search(query)
 			context['book'] = book
 			context['search_result'] = 1
 		except Exception as e:
