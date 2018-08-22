@@ -40,11 +40,12 @@
         </ul>
         <!-- Links -->
 
-        <form class="form-inline">
-            <div class="md-form my-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            </div>
+        <form class="form-inline my-2 my-lg-0 ml-auto" method='POST' action="{% url 'search-results' %}">
+            {% csrf_token %}
+            <input class="form-control" name="query" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
         </form>
+
     </div>
     <!-- Collapsible content -->
 
