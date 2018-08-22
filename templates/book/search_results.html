@@ -10,7 +10,7 @@
 
 		<div class="">
 
-			<h1 class="text-center mb-4 mt-4">Search Results</h1>
+			<h1 class="text-left mb-4 mt-4">Search Results</h1>
 			{% if search_results %}
 				<p>{{ search_results }} results found</p>
 			{% endif %}
@@ -19,12 +19,20 @@
 				<h3 class="text-danger mb-3">{{ error }}</h3>
 			{% endif %}
 
-			{% if book %}
-				<h3><span class="text-info">Title: </span>{{ book.title }}</h3>
-				<h3><span class="text-info">Author: </span>{{ book.author }}</h3>
-				<h3><span class="text-info">Year: </span>{{ book.year }}</h3>
-				<h3><span class="text-info">ISBN: </span>{{ book.isbn }}</h3>
-				<button class="btn mt-5 btn-outline-blue btn-md my-2 my-sm-0 ml-3" onclick=location.href="{% url 'book-detail' book.pk %}">Details</button>
+			{% if books %}
+				{% for book in books %}
+				<div class="card w-75 mb-4">
+				    <div class="card-body">
+				        <h3 class="card-title">{{ book.title }}</h3>
+				        <p class="card-text">{{ book.author }}</p>
+				        <p class="card-text">
+				        	<small class="text-info">Published on {{ book.year }}</small>
+				        	<small class="text-danger">ISBN: {{ book.isbn }}</small>
+				        </p>
+				        <a href="{% url 'book-detail' book.pk %}" class="btn btn-primary">Details</a>
+				    </div>
+				</div>
+				{% endfor %}
 			{% endif %}
 
 		</div>
