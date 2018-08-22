@@ -44,8 +44,9 @@ class BookAPIJson(View):
 	def get(self, request, *args, **kwargs):
 		isbn = kwargs.get('isbn', '')
 		isbn_value = str(isbn)
-		if len(isbn_value) == 9:
-			isbn_value += '0'
+		if len(isbn_value) != 10:
+			while len(isbn_value) != 10:
+				isbn_value = '0' + isbn_value
 		book = get_object_or_404(Book, isbn=isbn_value)
 		data = {
 			"title": book.title,
