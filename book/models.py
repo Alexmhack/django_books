@@ -5,7 +5,7 @@ current_year = datetime.datetime.now().year
 
 class BookSearchManager(models.Manager):
 	def search(self, *args, **kwargs):
-		qs = self.get_query_set()
+		qs = super().get_queryset()
 		keywords = kwargs.get('query', '')
 		if keywords:
 			try:
@@ -26,3 +26,4 @@ class Book(models.Model):
 		max_length=10,
 		help_text='10 character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a>'
 	)
+	search_objects = BookSearchManager()
