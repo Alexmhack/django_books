@@ -17,8 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
 
-from book.views import JsonDataView
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('book/', include('book.urls')),
