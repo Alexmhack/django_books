@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic, View
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.db.models import Q
 
 from .models import Book
 from .forms import JsonDataForm
@@ -48,12 +49,26 @@ class IndexView(View):
 class SearchFormResultsView(View):
 	def post(self, request, *args, **kwargs):
 		query = request.POST.get('query')
-		print(query)
-		context = {}
+		query = str(query)
+		int_query = 0
 		try:
-			books = Book.objects.filter(title__icontains=str(query))
+			int_query = int(query)
+		except Exception as e:
+			int_query = query
+		context = {'query': query}
+		try:
+			books = Book.objects.filter(
+				Q(title__contains=query) |
+				Q(author__contains=query) |
+				Q(year__contains=int_query) |
+				Q(isbn__contains=int_query)
+			)
+			print(books)
+			if len(books) == 0:
+				context['no_results'] = "No results found"
 			context['books'] = books
 			context['search_results'] = books.count()
+			context['string'] = "result" if books.count() == 1 else "results"
 		except Exception as e:
 			context['error'] = e
 			print(e)
