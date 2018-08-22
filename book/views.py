@@ -43,12 +43,3 @@ class IndexView(View):
 			'book_before_1980': queryset.filter(year__lte=1980).count(),
 		}
 		return render(request, 'book/index.html', context)
-
-
-class JsonDataView(View):
-	def get(self, request, *args, **kwargs):
-		form = JsonDataForm()
-		context = {
-			'form': form
-		}
-		return render(request, 'book/json_form.html', context)
